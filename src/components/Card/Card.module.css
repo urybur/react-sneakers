@@ -37,16 +37,10 @@
 }
 
 .btn {
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  background-color: #ffffff;
-  border: 1px solid #f2f2f2;
-  border-radius: 8px;
   cursor: pointer;
 }
 
-.card__btn img {
+.card_btn img {
   width: 11px;
   height: 11px;
 }

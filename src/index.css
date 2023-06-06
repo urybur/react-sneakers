@@ -26,24 +26,6 @@ ul {
   border-radius: 20px;
 }
 
-.header {
-  border-bottom: 1px solid #eaeaea;
-}
-
-.header__logo {
-  width: 40px;
-  height: 40px;
-}
-
-.header__title {
-  margin: 0;
-}
-
-.header__text {
-  margin: 0;
-  color: #9d9d9d;
-}
-
 .search__block {
   border-radius: 10px;
   padding: 15px;
@@ -55,16 +37,6 @@ ul {
   border: none;
   font-size: 16px;
   outline: 0;
-}
-
-.overlay {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
-  z-index: 1;
 }
 
 .green__btn {
@@ -87,7 +59,7 @@ ul {
 }
 
 .green__btn:hover {
-  background-color: darken($color: #9dd558, $amount: 10%);
+  background-color: #98c167;
 }
 
 .cart__total .green__btn {

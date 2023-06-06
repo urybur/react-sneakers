@@ -1,3 +1,3 @@
-import Card from "./Card";
+import Drawer from "./Drawer";
 
-export default Card;
+export default Drawer;
