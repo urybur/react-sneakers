@@ -1,23 +1,25 @@
 import { useState } from "react";
 import styles from "./Card.module.css";
 import classNames from "classnames/bind";
+const cx = classNames.bind(styles);
 
-function Card(props) {
+function Card({ imageUrl, name, price, onClickFavorite, onPlus }) {
   const [isAdded, setisAdded] = useState(false);
 
   const onClickPlus = () => {
+    onPlus({ imageUrl, name, price });
     setisAdded(!isAdded);
   };
-  const cx = classNames.bind(styles);
+
   return (
-    <div className={cx("card")}>
-      <img className={cx("favorite")} src="/img/heart-empty.svg" alt="лайк кроссовок" />
-      <img className={cx("img")} src={props.imageUrl} alt={props.name} />
-      <h5 className={cx("title")}>{props.name}</h5>
+    <div className={cx("root")}>
+      <img className={cx("favorite")} src="/img/heart-empty.svg" alt="лайк кроссовок" onClick={onClickFavorite} />
+      <img className={cx("img")} src={imageUrl} alt={name} />
+      <h5 className={cx("title")}>{name}</h5>
       <div className="d-flex justify-between align-center">
         <div>
           <div className={cx("price")}>Цена:</div>
-          <div className="fw-bold">{props.price} руб.</div>
+          <div className="fw-bold">{price} руб.</div>
         </div>
         <img
           className={cx("btn")}

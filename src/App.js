@@ -1,21 +1,30 @@
-import { useState } from "react";
+import React from "react";
 import Card from "./components/Card";
 import Drawer from "./components/Drawer";
 import Header from "./components/Header";
 
 function App() {
-  const [cartOpened, setCartOpened] = useState(false);
-  const [items, setItems] = useState([]);
-  fetch("https://647e583eaf984710854b2ec7.mockapi.io/items")
-    .then((res) => {
-      return res.json();
-    })
-    .then((json) => console.log(json));
+  const [items, setItems] = React.useState([]);
+  const [cartItems, setCartItems] = React.useState([]);
+  const [cartOpened, setCartOpened] = React.useState(false);
+
+  React.useEffect(() => {
+    fetch("https://647e583eaf984710854b2ec7.mockapi.io/items")
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => setItems(json));
+  }, []);
+
+  const onAddClickToCard = (obj) => {
+    setCartItems((prev) => [...prev, obj]);
+  };
 
   return (
     <div className="wrapper">
       {cartOpened && (
         <Drawer
+          items={cartItems}
           onClose={() => {
             setCartOpened(false);
           }}
@@ -41,7 +50,7 @@ function App() {
               name={item.title}
               price={item.price}
               imageUrl={item.imageUrl}
-              onClickPlus={() => console.log("Нажали добавить", item)}
+              onPlus={onAddClickToCard}
               onClickFavorite={() => console.log("Нажали в закладки", item)}
             />
           ))}

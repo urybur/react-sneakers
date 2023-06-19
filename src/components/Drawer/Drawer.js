@@ -1,24 +1,26 @@
 import styles from "./Drawer.module.css";
 import classNames from "classnames/bind";
+const cx = classNames.bind(styles);
 
-function Drawer(props) {
-  const cx = classNames.bind(styles);
+function Drawer({ onClose, items = [] }) {
   return (
     <div className={cx("overlay")}>
-      <div className={cx("drawer")}>
+      <div className={cx("root")}>
         <h2 className={cx("title")}>
           Корзина
-          <img className={cx("cart_item_remove")} src="/img/remove.svg" alt="закрыть корзину" onClick={props.onClose} />
+          <img className={cx("cart_item_remove")} src="/img/remove.svg" alt="закрыть корзину" onClick={onClose} />
         </h2>
         <div className={cx("cart_items")}>
-          <div className={cx("cart_item")}>
-            <img className={cx("cart_item_img")} src="/img/sneakers/1.jpg" alt="" />
-            <div>
-              <h5 className={cx("cart_item_title")}>Мужские Кроссовки Nike Air Max 270</h5>
-              <div className={cx("cart_item_price")}>12 905 руб.</div>
+          {items.map((obj) => (
+            <div key={obj.imageUrl + obj.name} className={cx("cart_item")}>
+              <img className={cx("cart_item_img")} src={obj.imageUrl} alt={obj.name} />
+              <div>
+                <h5 className={cx("cart_item_title")}>{obj.name}</h5>
+                <div className={cx("cart_item_price")}>{obj.price} руб.</div>
+              </div>
+              <img className={cx("cart_item_remove")} src="/img/remove.svg" alt="" />
             </div>
-            <img className={cx("cart_item_remove")} src="/img/remove.svg" alt="" />
-          </div>
+          ))}
         </div>
         <div className={cx("cart_total")}>
           <ul>

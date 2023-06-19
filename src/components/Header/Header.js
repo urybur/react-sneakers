@@ -1,15 +1,15 @@
 import styles from "./Header.module.css";
 import classNames from "classnames/bind";
+const cx = classNames.bind(styles);
 
 function Header(props) {
-  const cx = classNames.bind(styles);
   return (
-    <header className={cx("header")}>
+    <header className={cx("root")}>
       <div className="d-flex align-center">
         <img className={cx("logo")} src="/img/logo.png" alt="Логотип Реакт кроссовки" />
         <div>
           <h3 className={cx("title")}>React Sneakers</h3>
-          <p className="text">Магазин лучших кроссовок</p>
+          <p className={cx("text")}>Магазин лучших кроссовок</p>
         </div>
       </div>
       <ul className="d-flex align-center">
